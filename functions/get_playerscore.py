@@ -38,5 +38,4 @@ def get_playerscore(player):
             if score == scoreOP:
                 points_entry += 1
     score = points_entry + points_jank
-    playerscore = {"playername": player, "score": score}
-    return playerscore
+    return score
