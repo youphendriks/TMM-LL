@@ -31,11 +31,14 @@ def update_rankings():
     players = functions.get_players()
     rankings = {}
     for player in players:
+
         # Calculate points per player
         playerscore = functions.get_playerscore(player)
         # Calculate points from jankawards
         # Update rankings collection in DB
-        db.rankings.update_one({"playername": player, "score": playerscore})
+        db.rankings.update_one(
+            {"playername": player["playername"], "score": playerscore}, upsert=True
+        )
 
     return 0
 
