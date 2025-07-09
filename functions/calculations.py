@@ -35,7 +35,7 @@ def update_rankings():
         playerscore = functions.get_playerscore(player)
         # Calculate points from jankawards
         # Update rankings collection in DB
-        db.rankings.update(playerscore)
+        db.rankings.update({"playername": player, "score": playerscore})
 
     return 0
 
