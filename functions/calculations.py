@@ -31,7 +31,8 @@ def update_rankings():
     players = functions.get_players()
     rankings = {}
     for player in players:
-
+        print("player:")
+        print(player)
         # Calculate points per player
         playerscore = functions.get_playerscore(player)
         # Calculate points from jankawards
