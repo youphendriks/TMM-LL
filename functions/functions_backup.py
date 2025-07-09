@@ -1,3 +1,5 @@
+from datetime import datetime, time, timedelta
+
 import pymongo
 import streamlit as st
 from pymongo.mongo_client import MongoClient
@@ -12,6 +14,20 @@ uri = (
 )
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi("1"))
+
+
+# Add player to DB
+def add_player(firstname, lastname):
+    db = client.TMMDB
+    items = db.players.insert_one({"firstname": firstname, "lastname": lastname})
+    return items
+
+
+# Add deck to DB
+def add_deck(deckname):
+    db = client.TMMDB
+    items = db.decks.insert_one({"deckname": deckname})
+    return items
 
 
 # # Pull playernames from players collection.
@@ -67,3 +83,18 @@ def get_rankings():
     items = db.TMM1.find()
     items = list(items)  # make hashable for st.cache_data
     return items
+
+
+# Get time untill sunday 20:00
+def get_timer():
+    today = datetime.today()
+    t = datetime.combine(today.date() + timedelta((6 - today.weekday()) % 7), time(20))
+    if today > t:
+        t += timedelta(7)
+    delta = t - today
+    totalSeconds = delta.total_seconds()
+    days, left = divmod(totalSeconds, 86400)
+    hours, remainder = divmod(left, 3600)
+    minutes, seconds = divmod(remainder, 60)
+
+    return int(days), int(hours), int(minutes)

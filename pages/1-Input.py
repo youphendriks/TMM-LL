@@ -12,16 +12,6 @@ import functions
 # Obtain needed data through functions from functions.py
 players = functions.get_players()
 decks = functions.get_decks()
-if "form_data" not in st.session_state:
-    st.session_state.form_data = {
-        "P1": "",
-        "P2": "",
-        "D1": "",
-        "D2": "",
-        "S1": "",
-        "S2": "",
-        "submitted": False,
-    }
 
 # Banner
 st.image("pictures/TMM_DM_hori_smaller.png")
@@ -30,6 +20,7 @@ st.image("pictures/TMM_DM_hori_smaller.png")
 st.header("Input", divider="gray")
 
 col1, col2 = st.columns([3, 3], gap="large")
+
 col1.subheader("Player 1")
 
 P1 = col1.selectbox(
@@ -61,7 +52,6 @@ S1 = col1.selectbox(
     help="Select number of game wins",
     accept_new_options=False,
 )
-
 
 col2.subheader("Player 2")
 
@@ -95,11 +85,7 @@ S2 = col2.selectbox(
     accept_new_options=False,
 )
 
-
 if st.button("Submit score", use_container_width=True):
-    if len(P1) or len(P2) or len(D1) or len(D2) or len(S1) or len(S2) == 0:
-        st.write("Please check and make sure everything is filled in.")
-    else:
-        date = date.today()
-        result = functions.add_score(P1, D1, S1, P2, D2, S2, str(date))
-        st.write("Your score was added!")
+    date = date.today()
+    result = functions.add_data(P1, D1, S1, P2, D2, S2, str(date))
+    st.write("Your score was added!")
