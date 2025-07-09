@@ -1,7 +1,7 @@
 numpy
-pandas==2.0.3
-pymongo==4.12.1
-requests==2.32.3
-streamlit==1.45.0
-toml==0.10.2
+pandas
+pymongo
+requests
+streamlit
+toml
 
