@@ -41,7 +41,7 @@ def update_rankings():
         # Calculate points from jankawards
         # Update rankings collection in DB
         query_filter = {"playername": player}
-        update_operation = {"$set": {"score": playerscore}}
+        update_operation = {"score": playerscore}
 
         db.rankings.update_one(query_filter, update_operation, upsert=True)
 
