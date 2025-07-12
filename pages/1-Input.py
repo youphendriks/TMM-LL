@@ -23,6 +23,16 @@ col1, col2 = st.columns([3, 3], gap="large")
 
 col1.subheader("Player 1")
 
+R = col1.selectbox(
+    "Round",
+    options=[1, 2, 3, 4],
+    index=None,
+    key="R",
+    placeholder="Select the round",
+    accept_new_options=False,
+)
+
+
 P1 = col1.selectbox(
     "Player 1",
     options=players,
@@ -86,6 +96,6 @@ S2 = col2.selectbox(
 )
 
 if st.button("Submit score", use_container_width=True):
-    date = date.today()
-    result = functions.add_data(P1, D1, S1, P2, D2, S2, str(date))
+    datetime = datetime.today()
+    result = functions.add_data(R, P1, D1, S1, P2, D2, S2, str(datetime))
     st.write("Your score was added!")

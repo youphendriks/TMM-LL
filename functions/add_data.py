@@ -15,17 +15,18 @@ client = MongoClient(uri, server_api=ServerApi("1"))
 
 
 # Add score to the entry collection.
-def add_data(P1, D1, S1, P2, D2, S2, date):
+def add_data(R, P1, D1, S1, P2, D2, S2, datetime):
     db = client.TMMDB
     items = db.entry.insert_one(
         {
+            "round": R,
             "player1": P1,
             "deck1": D1,
             "score1": S1,
             "player2": P2,
             "deck2": D2,
             "score2": S2,
-            "date": date,
+            "datetime": datetime,
         }
     )
     return items
