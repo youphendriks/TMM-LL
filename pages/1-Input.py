@@ -19,11 +19,7 @@ st.image("pictures/TMM_DM_hori_smaller.png")
 # Container 1
 st.header("Input", divider="gray")
 
-col1, col2 = st.columns([3, 3], gap="large")
-
-col1.subheader("Player 1")
-
-R = col1.selectbox(
+R = st.selectbox(
     "Round",
     options=[1, 2, 3, 4],
     index=None,
@@ -32,6 +28,10 @@ R = col1.selectbox(
     accept_new_options=False,
 )
 
+
+col1, col2 = st.columns([3, 3], gap="large")
+
+col1.subheader("Player 1")
 
 P1 = col1.selectbox(
     "Player 1",
