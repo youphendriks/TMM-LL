@@ -39,6 +39,7 @@ st.write("Merodestraat 31, 6171 XM in Stein.")
 # Container 2
 st.header("Rankings", divider="gray")
 df = pd.DataFrame(rankings, columns=("_id", "playername", "score"))
+# df = df.drop(column, inplace=True, axis=1)
 
 print("df:")
 print(df)

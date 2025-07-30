@@ -96,6 +96,6 @@ S2 = col2.selectbox(
 )
 
 if st.button("Submit score", use_container_width=True):
-    datetime = datetime.today()
+    datetime = datetime.now().replace(second=0, microsecond=0)
     result = functions.add_data(R, P1, D1, S1, P2, D2, S2, str(datetime))
     st.write("Your score was added!")
