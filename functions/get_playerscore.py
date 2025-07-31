@@ -73,5 +73,10 @@ def get_playerscore(player):
         print("No data for this player")
     points_attendance = len(fnms_joined)
     print(f"points_attendance: {points_attendance}")
+    # Get points awarded in jank awards
+    jank = db.jank.find()
+    for jankiness in jank:
+        if jankiness["playername"] == player:
+            points_jank += jankiness["points"]
     score = points_entry + points_jank + points_attendance
     return score
