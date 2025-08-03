@@ -6,6 +6,9 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
 import functions
+from functions.get_layout import header
+
+header()
 
 container1 = st.container(border=True)
 container1.header("Add deck", divider="gray")

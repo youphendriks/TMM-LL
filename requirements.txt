@@ -4,4 +4,4 @@ pymongo
 requests
 streamlit
 toml
-
+Authlib

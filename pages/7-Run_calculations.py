@@ -3,6 +3,9 @@ import pandas as pd
 import streamlit as st
 
 import functions
+from functions.get_layout import header
+
+header()
 
 # View entries last 7 days
 

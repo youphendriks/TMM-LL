@@ -2,6 +2,10 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
+from functions.get_layout import header
+
+header()
+
 container1 = st.container(border=True)
 container1.header("Scoring", divider="gray")
 container1.write("Scoring is simple;")

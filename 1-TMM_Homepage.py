@@ -6,6 +6,7 @@ from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 
 import functions
+from functions.get_layout import header
 
 # Obtain needed data through functions from functions.py
 players = functions.get_players()
@@ -13,6 +14,8 @@ decks = functions.get_decks()
 rankings = functions.get_rankings()
 days, hours, minutes = functions.get_timer()
 
+#login
+header()
 # Banner
 st.image("pictures/TMM_DM_hori_smaller.png")
 

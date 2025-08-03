@@ -1,6 +1,9 @@
 import streamlit as st
 
 import functions
+from functions.get_layout import header
+
+header()
 
 container1 = st.container(border=True)
 container1.header("Add player", divider="gray")
