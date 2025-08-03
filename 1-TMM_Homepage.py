@@ -28,7 +28,7 @@ st.write("We create a little competition during our FNM's for shits & giggles.")
 
 st.subheader("Current season: Season 2")
 
-st.write("Starting at FNM 12th of July 2025 and ending at FNM 9th of January 2026!")
+st.write("Starting at FNM 4th of July 2025 and ending at FNM 9th of January 2026!")
 
 st.subheader("Join us!")
 
@@ -42,9 +42,14 @@ st.write("Merodestraat 31, 6171 XM in Stein.")
 # Container 2
 st.header("Rankings", divider="gray")
 df = pd.DataFrame(rankings, columns=("_id", "playername", "score"))
+# df = df.drop(column, inplace=True, axis=1)
 
 print("df:")
 print(df)
+df.drop(df[df["playername"] == "Jank1"].index, inplace=True)
+df.drop(df[df["playername"] == "Jank2"].index, inplace=True)
+df.drop(df[df["playername"] == "Jank3"].index, inplace=True)
+df.drop(df[df["playername"] == "Bye"].index, inplace=True)
 df = df.sort_values(by=["score"], ascending=False)
 df.index = pd.RangeIndex(start=1, stop=len(df.index) + 1, step=1)
 st.dataframe(df, column_order=("playername", "score"))

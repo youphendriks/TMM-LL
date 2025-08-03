@@ -15,7 +15,9 @@ client = MongoClient(uri, server_api=ServerApi("1"))
 
 
 # Add player to DB
-def add_jankpoint(deck):
+def add_jankpoint(playername, points, fnmdate):
     db = client.TMMDB
-    items = db.players.insert_one({"firstname": firstname, "lastname": lastname})
+    items = db.jank.insert_one(
+        {"playername": playername, "points": points, "fnm": fnmdate}
+    )
     return items

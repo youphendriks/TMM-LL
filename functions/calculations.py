@@ -27,20 +27,13 @@ def calculations():
 
 def update_rankings():
     db = client.TMMDB
-    data = functions.get_data()
     players = functions.get_players()
-    rankings = {}
     for player in players:
         print("player:")
         print(player)
-        # playerset = db.players.find({"playername": player})
-        # index = playerset["_id"]
         # Calculate points per player
-
         playerscore = functions.get_playerscore(player)
-        print("playerscore:")
-        print(playerscore)
-        # Calculate points from jankawards
+        print(f"playerscore:{playerscore}")
         # Update rankings collection in DB
         query_filter = {"playername": player}
         update_operation = {"$set": {"score": playerscore}}

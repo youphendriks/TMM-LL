@@ -12,6 +12,8 @@ container1.write("Scoring is simple;")
 container1.write("Winning a round earns you 3 points.")
 container1.write("Draws earn you 1 point.")
 container1.write("A loss earns you 0 points.")
+container1.write("Attending an FNM earns you 1 point.")
+
 
 container2 = st.container(border=True)
 container2.header("Jank awards info", divider="gray")
@@ -22,9 +24,9 @@ container2.write(
     "Every FNM you can enter your jank deck into the comperition. Everyone can vote on the deck they think is the best jank. On sunday evenings at 20:00 voting will stop and the winners will be declared!"
 )
 container2.write("The following points will be awarded to the winners;")
-container2.write("1st place: 7 points")
-container2.write("2nd place: 5 points")
-container2.write("3rd place: 3 points")
+container2.write("1st place: 3 points")
+container2.write("2nd place: 2 points")
+container2.write("3rd place: 1 points")
 
 container2.subheader("How to join")
 container2.write(
