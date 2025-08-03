@@ -3,6 +3,9 @@ import datetime
 import streamlit as st
 
 import functions
+from functions.get_layout import header
+
+header()
 
 # Obtain needed data through functions from functions.py
 players = functions.get_players()
