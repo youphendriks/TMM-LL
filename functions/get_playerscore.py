@@ -3,24 +3,14 @@ import pymongo
 import streamlit as st
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-
-uri = (
-    "mongodb+srv://"
-    + st.secrets.mongo.username
-    + ":"
-    + st.secrets.mongo.password
-    + "@tmm-ll.6siai.mongodb.net/?retryWrites=true&w=majority&appName=TMM-LL"
-)
-# Create a new client and connect to the server
-client = MongoClient(uri, server_api=ServerApi("1"))
-
+from objects.database_client import db_client
 
 # Pull data concerning a player from the collection.
 def get_playerscore(player):
     points_entry = 0
     points_jank = 0
     fnms_joined = []
-    db = client.TMMDB
+    db = db_client.get_client().TMMDB
     items = db.entry.find()
     # Calculate points from games, attendance and jank awards
     try:
