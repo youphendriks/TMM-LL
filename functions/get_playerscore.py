@@ -1,23 +1,19 @@
-import pandas as pd
-import pymongo
-import streamlit as st
-from pymongo.mongo_client import MongoClient
-from pymongo.server_api import ServerApi
-from objects.database_client import db_client
+from objects.repositories.entry_repository import entry_repository
+from objects.repositories.jank_repository import jank_repository
 
 # Pull data concerning a player from the collection.
 def get_playerscore(player):
     points_entry = 0
     points_jank = 0
     fnms_joined = []
-    db = db_client.get_client().TMMDB
-    items = db.entry.find()
+    items = entry_repository.get_entries()
     # Calculate points from games, attendance and jank awards
     try:
         for item in items:
 
             print("item:")
             print(item)
+            print(player)
             if item["player1"] == player:
                 print(f"item: {item}")
                 # Check if fnm date in list, else add it
@@ -64,7 +60,7 @@ def get_playerscore(player):
     points_attendance = len(fnms_joined)
     print(f"points_attendance: {points_attendance}")
     # Get points awarded in jank awards
-    jank = db.jank.find()
+    jank = jank_repository.get_all_jank()
     for jankiness in jank:
         if jankiness["playername"] == player:
             points_jank += jankiness["points"]

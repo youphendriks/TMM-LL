@@ -23,11 +23,13 @@ def update_rankings():
         # Calculate points per player
         playerscore = functions.get_playerscore(player)
         print(f"playerscore:{playerscore}")
+        st.write(player)
+        st.write(playerscore)
         # Update rankings collection in DB
         query_filter = {"playername": player}
         update_operation = {"$set": {"score": playerscore}}
 
-        db.rankings.update_one(query_filter, update_operation, upsert=True)
+        # db.rankings.update_one(query_filter, update_operation, upsert=True)
 
     return 0
 

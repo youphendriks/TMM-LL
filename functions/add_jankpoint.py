@@ -1,13 +1,5 @@
-import pymongo
-import streamlit as st
-from pymongo.mongo_client import MongoClient
-from pymongo.server_api import ServerApi
-from objects.database_client import db_client
+from objects.repositories.jank_repository import jank_repository
 
-# Add player to DB
+# Add jank points for player to DB
 def add_jankpoint(playername, points, fnmdate):
-    db = db_client.get_client().TMMDB
-    items = db.jank.insert_one(
-        {"playername": playername, "points": points, "fnm": fnmdate}
-    )
-    return items
+    return jank_repository.add_jank_points_for_player(playername, points, fnmdate)

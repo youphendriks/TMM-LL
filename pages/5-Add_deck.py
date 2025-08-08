@@ -16,4 +16,4 @@ deckname = container1.text_input("Deck name")
 
 if container1.button("Add Deck"):
     result = functions.add_deck(deckname)
-    st.write("%s was added to decks!" % (deckname))
+    st.write("%s was added to decks!" % (result["deckname"]))

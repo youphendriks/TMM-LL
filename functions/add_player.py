@@ -1,12 +1,8 @@
-import pymongo
-import streamlit as st
-from pymongo.mongo_client import MongoClient
-from pymongo.server_api import ServerApi
-from objects.database_client import db_client
+from objects.repositories.player_repository import player_repository
+from objects.repositories.rank_repository import rank_repository
 
 # Add player to DB
 def add_player(playername):
-    db = db_client.get_client().TMMDB
-    items = db.players.insert_one({"playername": playername})
-    rankingentry = db.rankings.insert_one({"playername": playername, "score": 0})
-    return items
+    player_id = player_repository.add_player(playername)
+    rank_repository.add_ranking_for_player(player_id)
+    return player_repository.get_player(player_id)

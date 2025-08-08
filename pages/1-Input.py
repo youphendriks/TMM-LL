@@ -40,6 +40,7 @@ P1 = col1.selectbox(
     options=players,
     index=None,
     key="P1",
+    format_func=lambda p: f"{p['playername']}",
     placeholder="Select player 1",
     help="If your name is not in the list, add it on the 'Add player' page!",
     accept_new_options=False,
@@ -50,6 +51,7 @@ D1 = col1.selectbox(
     options=decks,
     index=None,
     key="D1",
+    format_func=lambda d: f"{d['deckname']}",
     placeholder="Select player 1's deck",
     help="If your deck is not in the list, add it on the 'Add deck' page!",
     accept_new_options=False,
@@ -71,6 +73,7 @@ P2 = col2.selectbox(
     "Player 2",
     options=players,
     key="P2",
+    format_func=lambda p: f"{p['playername']}",
     index=None,
     placeholder="Select player 2",
     help="If your name is not in the list, add it on the 'Add player' page!",
@@ -82,6 +85,7 @@ D2 = col2.selectbox(
     options=decks,
     key="D2",
     index=None,
+    format_func=lambda d: f"{d['deckname']}",
     placeholder="Select player 2's deck",
     help="If your deck is not in the list, add it on the 'Add deck' page!",
     accept_new_options=False,
@@ -95,7 +99,7 @@ S2 = col2.selectbox(
     placeholder="Player 2 game wins.",
     help="Select number of game wins",
     accept_new_options=False,
-)
+)  
 
 if st.button("Submit score", use_container_width=True):
     datetime = datetime.now().replace(second=0, microsecond=0)
