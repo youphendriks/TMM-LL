@@ -28,8 +28,7 @@ def update_rankings():
                                 }
                             }
 
-        if player["playername"] == "Bye":
-            db.rankings.update_one(query_filter, update_operation, upsert=True)
+        db.rankings.update_one(query_filter, update_operation, upsert=True)
 
 
 def update_deckstats():

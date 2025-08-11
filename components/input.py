@@ -1,5 +1,6 @@
 import streamlit as st
 import functions
+from datetime import datetime
 
 def main():
     # Obtain needed data through functions from functions.py
@@ -93,8 +94,8 @@ def main():
     )  
 
     if st.button("Submit score", use_container_width=True):
-        datetime = datetime.now().replace(second=0, microsecond=0)
-        result = functions.add_data(R, P1, D1, S1, P2, D2, S2, str(datetime))
+        dt = datetime.now().replace(second=0, microsecond=0)
+        result = functions.add_data(R, P1, D1, S1, P2, D2, S2, str(dt))
         st.write("Your score was added!")
 
 if __name__ == "__main__":
