@@ -1,9 +1,4 @@
-import numpy as np
-import pandas as pd
-import pymongo
 import streamlit as st
-from pymongo.mongo_client import MongoClient
-from pymongo.server_api import ServerApi
 from objects.database_client import db_client
 import functions
 
@@ -18,20 +13,23 @@ def update_rankings():
     db = db_client.get_client().TMMDB
     players = functions.get_players()
     for player in players:
-        print("player:")
-        print(player)
         # Calculate points per player
-        playerscore = functions.get_playerscore(player)
+        playerscore = functions.calculate_player_score(player)
         print(f"playerscore:{playerscore}")
-        st.write(player)
+        st.write(player["playername"])
         st.write(playerscore)
         # Update rankings collection in DB
-        query_filter = {"playername": player}
-        update_operation = {"$set": {"score": playerscore}}
+        query_filter = {"playerid": player["_id"]}
+        update_operation = {"$set": {
+                                    "overallpoints": playerscore["overall_points"],
+                                    "playpoints": playerscore["play_points"],
+                                    "attendancepoints": playerscore["attendance_points"],
+                                    "jankpoints": playerscore["jank_points"]
+                                }
+                            }
 
-        # db.rankings.update_one(query_filter, update_operation, upsert=True)
-
-    return 0
+        if player["playername"] == "Bye":
+            db.rankings.update_one(query_filter, update_operation, upsert=True)
 
 
 def update_deckstats():

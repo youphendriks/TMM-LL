@@ -11,5 +11,8 @@ class JankRepository:
 
     def get_all_jank(self):
         return self._collection.find()
+    
+    def get_jank_for_player(self, player_id):
+        return self._collection.find({"playerid": player_id})
 
 jank_repository = JankRepository()
