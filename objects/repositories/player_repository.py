@@ -13,7 +13,7 @@ class PlayerRepository:
     def get_player(self, id):
         return self._collection.find_one(id)
 
-    def get_player_by_name(self, given_name, family_name):
+    def get_player_by_name(self, given_name, email):
 
         matches = list(
             self._collection.find(
@@ -33,7 +33,7 @@ class PlayerRepository:
 
         # Multiple matches, now filter those whose playername also contains family_name
         for player in matches:
-            if family_name.lower() in player.get("playername", "").lower():
+            if player.get("playername", "").lower() in email.lower():
                 return player
 
         # No match found containing both names
