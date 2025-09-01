@@ -12,7 +12,7 @@ def create_user_profile():
     print("user:")
     print(userdict)
     player = player_repository.get_player_by_name(
-        st.user["given_name"], st.user["family_name"]
+        st.user["given_name"], st.user["email"]
     )
     player_id = player["_id"] if player else None
     # generate a profile according to the data passed by the IdP
@@ -23,7 +23,6 @@ def create_user_profile():
         "emailverified": st.user["email_verified"],
         "name": st.user["name"],
         "givenname": st.user["given_name"],
-        "familyname": st.user["family_name"],
         "roles": ["user"],
         "lastlogin": datetime.now(),
     }
