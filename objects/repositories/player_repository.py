@@ -1,5 +1,7 @@
-from objects.database_client import db_client
 import re
+
+from objects.database_client import db_client
+
 
 class PlayerRepository:
     def __init__(self):
@@ -7,13 +9,22 @@ class PlayerRepository:
 
     def get_players(self):
         return self._collection.find().to_list()
-    
+
     def get_player(self, id):
         return self._collection.find_one(id)
-    
+
     def get_player_by_name(self, given_name, family_name):
-        matches = list(self._collection.find({"playername": re.compile(f".*{re.escape(given_name)}.*", re.IGNORECASE)}))
-        
+
+        matches = list(
+            self._collection.find(
+                {
+                    "playername": re.compile(
+                        f".*{re.escape(given_name)}.*", re.IGNORECASE
+                    )
+                }
+            )
+        )
+
         if not matches:
             return None  # No matches by given_name
 
@@ -27,9 +38,10 @@ class PlayerRepository:
 
         # No match found containing both names
         return None
-    
+
     def add_player(self, player_name: str):
         item = self._collection.insert_one({"playername": player_name})
         return item.inserted_id
-    
+
+
 player_repository = PlayerRepository()
