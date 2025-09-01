@@ -8,9 +8,9 @@ from objects.repositories.user_repository import user_repository
 
 def create_user_profile():
     # See if a player exists with the name of logged in user to link the profile to
-
+    userdict = st.user.to_dict()
     print("user:")
-    print(st.user)
+    print(userdict)
     player = player_repository.get_player_by_name(
         st.user["given_name"], st.user["family_name"]
     )
