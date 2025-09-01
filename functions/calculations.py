@@ -1,22 +1,6 @@
-import numpy as np
-import pandas as pd
-import pymongo
 import streamlit as st
-from pymongo.mongo_client import MongoClient
-from pymongo.server_api import ServerApi
-
+from objects.database_client import db_client
 import functions
-
-uri = (
-    "mongodb+srv://"
-    + st.secrets.mongo.username
-    + ":"
-    + st.secrets.mongo.password
-    + "@tmm-ll.6siai.mongodb.net/?retryWrites=true&w=majority&appName=TMM-LL"
-)
-# Create a new client and connect to the server
-client = MongoClient(uri, server_api=ServerApi("1"))
-
 
 # Run all the calculations after an FNM
 def calculations():
@@ -26,21 +10,25 @@ def calculations():
 
 
 def update_rankings():
-    db = client.TMMDB
+    db = db_client.get_client().TMMDB
     players = functions.get_players()
     for player in players:
-        print("player:")
-        print(player)
         # Calculate points per player
-        playerscore = functions.get_playerscore(player)
+        playerscore = functions.calculate_player_score(player)
         print(f"playerscore:{playerscore}")
+        st.write(player["playername"])
+        st.write(playerscore)
         # Update rankings collection in DB
-        query_filter = {"playername": player}
-        update_operation = {"$set": {"score": playerscore}}
+        query_filter = {"playerid": player["_id"]}
+        update_operation = {"$set": {
+                                    "overallpoints": playerscore["overall_points"],
+                                    "playpoints": playerscore["play_points"],
+                                    "attendancepoints": playerscore["attendance_points"],
+                                    "jankpoints": playerscore["jank_points"]
+                                }
+                            }
 
         db.rankings.update_one(query_filter, update_operation, upsert=True)
-
-    return 0
 
 
 def update_deckstats():

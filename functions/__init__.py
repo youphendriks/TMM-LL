@@ -8,7 +8,9 @@ from .get_decks import get_decks
 from .get_deckstats import get_deckstats
 from .get_jankscore import get_jankscore
 from .get_players import get_players
-from .get_playerscore import get_playerscore
 from .get_playerstats import get_playerstats
 from .get_rankings import get_rankings
 from .get_timer import get_timer
+from .calculate_player_score import calculate_player_score
+from .get_user_profile import get_user_profile
+from .create_user_profile import create_user_profile
