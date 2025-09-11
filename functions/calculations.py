@@ -1,6 +1,8 @@
 import streamlit as st
-from objects.database_client import db_client
+
 import functions
+from objects.database_client import db_client
+
 
 # Run all the calculations after an FNM
 def calculations():
@@ -12,6 +14,7 @@ def calculations():
 def update_rankings():
     db = db_client.get_client().TMMDB
     players = functions.get_players()
+    print(f"Players:  {players}")
     for player in players:
         # Calculate points per player
         playerscore = functions.calculate_player_score(player)
@@ -20,14 +23,16 @@ def update_rankings():
         st.write(playerscore)
         # Update rankings collection in DB
         query_filter = {"playerid": player["_id"]}
-        update_operation = {"$set": {
-                                    "overallpoints": playerscore["overall_points"],
-                                    "playpoints": playerscore["play_points"],
-                                    "attendancepoints": playerscore["attendance_points"],
-                                    "jankpoints": playerscore["jank_points"]
-                                }
-                            }
-
+        update_operation = {
+            "$set": {
+                "playername": playerscore["playername"],
+                "overallpoints": playerscore["overall_points"],
+                "playpoints": playerscore["play_points"],
+                "attendancepoints": playerscore["attendance_points"],
+                "jankpoints": playerscore["jank_points"],
+            }
+        }
+        print(f"Update operation : {update_operation}")
         db.rankings.update_one(query_filter, update_operation, upsert=True)
 
 

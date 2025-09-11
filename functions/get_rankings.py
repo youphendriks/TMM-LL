@@ -2,7 +2,9 @@ import pymongo
 import streamlit as st
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
+
 from objects.database_client import db_client
+
 
 # Load player_rankings.
 def get_rankings():

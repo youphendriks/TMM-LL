@@ -1,4 +1,8 @@
+import pandas as pd
+from pandas import DataFrame
+
 from objects.database_client import db_client
+
 
 class EntryRepository:
     def __init__(self):
@@ -17,11 +21,14 @@ class EntryRepository:
                 "datetime": datetime,
             }
         )
-    
+
     def get_entries(self):
         return self._collection.find()
-    
-    def get_entries_for_player(self, player_id):
-        return self._collection.find( { "$or": [ {"player1": player_id}, {"player2": player_id}]})
+
+    def get_entries_for_player(self, playername):
+        query = {"$or": [{"player1": playername}, {"player2": playername}]}
+        return self._collection.find(query)
+
 
 entry_repository = EntryRepository()
+
