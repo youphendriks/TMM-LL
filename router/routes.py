@@ -10,4 +10,5 @@ def get_routes():
         "Add Deck": {"component": "add_deck", "roles": ["admin"]},
         "Award Jank Points": {"component": "award_jank_points", "roles": ["admin"]},
         "Calculations": {"component": "calculations", "roles": ["admin"]},
+        "Jank Poll": {"component": "jank_poll", "roles": ["admin"]},
     }

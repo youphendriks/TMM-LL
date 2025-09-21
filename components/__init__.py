@@ -8,3 +8,4 @@ from .info import main as info
 from .input import main as input
 from .playerstats import main as playerstats
 from .profile import main as profile
+from .jank_poll import main as jank_poll
