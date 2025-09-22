@@ -7,11 +7,11 @@ class PlayerRepository:
     def __init__(self):
         self._collection = db_client.get_client().TMMDB.players
 
-    def get_players(self):
-        return self._collection.find().to_list()
-
     def get_player(self, id):
         return self._collection.find_one(id)
+
+    def get_players(self):
+        return self._collection.find().to_list()
 
     def get_player_by_name(self, given_name, email):
 

@@ -2,7 +2,10 @@ from .add_data import add_data
 from .add_deck import add_deck
 from .add_jankpoint import add_jankpoint
 from .add_player import add_player
+from .calculate_deckstats import calculate_deckstats
+from .calculate_player_score import calculate_player_score
 from .calculations import calculations
+from .create_user_profile import create_user_profile
 from .get_data import get_data
 from .get_decks import get_decks
 from .get_deckstats import get_deckstats
@@ -11,6 +14,4 @@ from .get_players import get_players
 from .get_playerstats import get_playerstats
 from .get_rankings import get_rankings
 from .get_timer import get_timer
-from .calculate_player_score import calculate_player_score
 from .get_user_profile import get_user_profile
-from .create_user_profile import create_user_profile

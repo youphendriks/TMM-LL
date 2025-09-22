@@ -1,6 +1,3 @@
-import pandas as pd
-from pandas import DataFrame
-
 from objects.database_client import db_client
 
 
@@ -24,6 +21,10 @@ class EntryRepository:
 
     def get_entries(self):
         return self._collection.find()
+
+    def get_entries_for_deck(self, deck):
+        query = {"$or": [{"deck1": deck}, {"deck2": deck}]}
+        return self._collection.find(query)
 
     def get_entries_for_player(self, playername):
         query = {"$or": [{"player1": playername}, {"player2": playername}]}
