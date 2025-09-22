@@ -9,12 +9,14 @@ def main():
     # Obtain needed data through functions from functions.py
     players = functions.get_players()
     decks = functions.get_decks()
-
+    today = datetime.today().strftime("%Y-%m-%d")
     # Banner
     st.image("pictures/TMM_DM_hori_smaller.png")
 
     # Container 1
     st.header("Input", divider="gray")
+
+    D = st.date_input("Date of FNM", today)
 
     R = st.selectbox(
         "Round",
@@ -96,11 +98,9 @@ def main():
     )
 
     if st.button("Submit score", use_container_width=True):
-        dt = datetime.now().replace(second=0, microsecond=0)
-        result = functions.add_data(R, P1, D1, S1, P2, D2, S2, str(dt))
+        result = functions.add_data(D, R, P1, D1, S1, P2, D2, S2)
         st.write("Your score was added!")
 
 
 if __name__ == "__main__":
     main()
-
