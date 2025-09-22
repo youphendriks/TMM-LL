@@ -4,7 +4,9 @@ import pymongo
 import streamlit as st
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
+
 import functions
+
 
 def main():
     container1 = st.container(border=True)
@@ -13,7 +15,9 @@ def main():
 
     if container1.button("Add Deck"):
         result = functions.add_deck(deckname)
-        st.write("%s was added to decks!" % (result["deckname"]))
+        st.write("%s was added to decks!" % (deckname))
+
 
 if __name__ == "__main__":
     main()
+
