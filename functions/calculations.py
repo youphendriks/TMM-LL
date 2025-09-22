@@ -38,8 +38,28 @@ def update_rankings():
 
 def update_deckstats():
     # Get list of decks
+    db = db_client.get_client().TMMDB
+    decks = functions.get_decks()
+
     # For each deck
-    # Get win%
+    for deck in decks:
+
+        # Get win%
+        entries, round_count, win_percentage = (
+            functions.calculate_deck_roundwin_percentage(deck)
+        )
+        print(
+            "Deck: {} - Rounds player: {} - Win%:{}".format(
+                deck, round_count, win_percentage
+            )
+        )
+        # Get win% vs each other deck
+        win_percentage_vs_decks = functions.calculate_deck_roundwin_vs_deck(
+            deck, entries
+        )
+        # Get player with highest win% with the deck [TODO]
+
+        # Update data in DB
     return 0
 
 

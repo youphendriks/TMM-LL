@@ -82,9 +82,9 @@ def main():
             "Jank Points",
         ),
     )
-    # if st.button("Run calculations", use_container_width=True):
-    #    result = functions.calculations()
-    #    st.write("Calculations done!")
+    if st.button("Run calculations", use_container_width=True):
+        result = functions.calculations()
+        st.write("Calculations done!")
 
     # Container 3
     st.header("Jank awards", divider="gray")

@@ -1,6 +1,9 @@
-import streamlit as st
-import functions
 from datetime import datetime
+
+import streamlit as st
+
+import functions
+
 
 def main():
     # Obtain needed data through functions from functions.py
@@ -21,7 +24,6 @@ def main():
         placeholder="Select the round",
         accept_new_options=False,
     )
-
 
     col1, col2 = st.columns([3, 3], gap="large")
 
@@ -91,12 +93,14 @@ def main():
         placeholder="Player 2 game wins.",
         help="Select number of game wins",
         accept_new_options=False,
-    )  
+    )
 
     if st.button("Submit score", use_container_width=True):
         dt = datetime.now().replace(second=0, microsecond=0)
         result = functions.add_data(R, P1, D1, S1, P2, D2, S2, str(dt))
         st.write("Your score was added!")
 
+
 if __name__ == "__main__":
     main()
+
