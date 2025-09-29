@@ -11,6 +11,9 @@ def calculate_player_score(player):
     playername = player["playername"]
     # put in list to make non consumable
     entries = list(entry_repository.get_entries_for_player(playername))
+    print("Entries:")
+    for entry in entries:
+        print(entry)
     play_points = calculate_play_points(entries, player_id)
     attendance_points = calculate_attendance(entries)
     jank_points = calculate_jank_points(player_id)
@@ -30,10 +33,13 @@ def calculate_play_points(entries, player_id):
     play_points_total = 0
 
     for entry in entries:
-        scores = determine_match_scores(entry, player_id)
+        player_score, opp_score = determine_match_scores(entry, player_id)
+        print(f"player_score: {player_score}")
+        print(f"opp_score: {opp_score}")
         play_points_total += calculate_match_points(
-            scores["player_score"], scores["opp_score"]
+            player_score, opp_score
         )
+        print(f"play_points_total: {play_points_total}")
 
     return play_points_total
 

@@ -7,8 +7,8 @@ from objects.database_client import db_client
 # Run all the calculations after an FNM
 def calculations():
     update_rankings()
-    update_deckstats()
-    update_playerstats()
+    #update_deckstats()
+    #update_playerstats()
 
 
 def update_rankings():
