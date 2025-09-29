@@ -9,11 +9,11 @@ class EntryRepository:
         return self._collection.insert_one(
             {
                 "round": R,
-                "player1": P1,
-                "deck1": D1,
+                "player1": P1["playername"],
+                "deck1": D1["deckname"],
                 "score1": S1,
-                "player2": P2,
-                "deck2": D2,
+                "player2": P2["playername"],
+                "deck2": D2["deckname"],
                 "score2": S2,
                 "datetime": D,
             }

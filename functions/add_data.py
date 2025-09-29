@@ -4,6 +4,4 @@ from objects.repositories.entry_repository import entry_repository
 
 # Add score to the entry collection.
 def add_data(D, R, P1, D1, S1, P2, D2, S2):
-    return entry_repository.add_entry(
-        R, P1["playername"], D1["deckname"], S1, P2["playername"], D2["deckname"], S2, D
-    )
+    return entry_repository.add_entry(R, P1, D1, S1, P2, D2, S2, D)
