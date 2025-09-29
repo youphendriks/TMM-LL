@@ -98,7 +98,7 @@ def main():
     )
 
     if st.button("Submit score", use_container_width=True):
-        result = functions.add_data(D, R, P1, D1, S1, P2, D2, S2)
+        result = functions.add_data(R, P1, D1, S1, P2, D2, S2, D)
         st.write("Your score was added!")
 
 
