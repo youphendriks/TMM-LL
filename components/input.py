@@ -98,6 +98,16 @@ def main():
     )
 
     if st.button("Submit score", use_container_width=True):
+        print("Input is:")
+        print(f"R:{R}")
+        print(f"P1:{P1}")
+        print(f"D1:{D1}")
+        print(f"S1:{S1}")
+        print(f"P2:{P2}")
+        print(f"D2:{D2}")
+        print(f"S2:{S2}")
+        print(f"D:{D}")
+
         result = functions.add_data(R, P1, D1, S1, P2, D2, S2, D)
         st.write("Your score was added!")
 
