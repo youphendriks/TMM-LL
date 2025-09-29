@@ -102,6 +102,7 @@ def main():
         D1 = D1["deckname"]
         P2 = P2["playername"]
         D2 = D2["deckname"]
+        D = str(D)
         print("Input is:")
         print(f"R:{R}")
         print(f"P1:{P1}")
