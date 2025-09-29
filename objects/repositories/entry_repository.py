@@ -5,15 +5,15 @@ class EntryRepository:
     def __init__(self):
         self._collection = db_client.get_client().TMMDB.entry
 
-    def add_entry(self, R, P1_id, D1_id, S1, P2_id, D2_id, S2, D):
+    def add_entry(self, R, P1, D1, S1, P2, D2, S2, D):
         return self._collection.insert_one(
             {
                 "round": R,
-                "player1": P1_id,
-                "deck1": D1_id,
+                "player1": P1,
+                "deck1": D1,
                 "score1": S1,
-                "player2": P2_id,
-                "deck2": D2_id,
+                "player2": P2,
+                "deck2": D2,
                 "score2": S2,
                 "datetime": D,
             }
