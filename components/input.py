@@ -98,6 +98,10 @@ def main():
     )
 
     if st.button("Submit score", use_container_width=True):
+        P1 = P1["playername"]
+        D1 = D1["deckname"]
+        P2 = P2["playername"]
+        D2 = D2["deckname"]
         print("Input is:")
         print(f"R:{R}")
         print(f"P1:{P1}")
