@@ -1,6 +1,9 @@
 import datetime
+
 import streamlit as st
+
 import functions
+
 
 def main():
     # Obtain needed data through functions from functions.py
@@ -19,7 +22,6 @@ def main():
         accept_new_options=False,
     )
 
-
     points = container1.selectbox(
         "Points won",
         options=[1, 2, 3],
@@ -37,5 +39,7 @@ def main():
         result = functions.add_jankpoint(player["_id"], points, fnmdatestr)
         st.write("The points were added to the database!")
 
+
 if __name__ == "__main__":
     main()
+
