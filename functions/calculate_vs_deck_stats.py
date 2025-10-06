@@ -4,15 +4,15 @@ from objects.repositories.entry_repository import entry_repository
 from objects.repositories.jank_repository import jank_repository
 
 
-def calculate_deckstats(deck):
+def calculate_vs_deck_stats(deck, entries):
     deck = deck["deckname"]
     print(f"Calculating deckstats for: {deck}")
     # retrieve entries for calculation
     # put in list to make non consumable
     entries = list(entry_repository.get_entries_for_deck(deck))
 
-    # Get number of rounds played with the deck
-    round_count = len(entries)
+    # Get number of matches played with the deck
+    match_count = len(entries)
     # calculate number of roundwins
     win_count = calculate_roundwin_count(entries, deck)
     if win_count or len(entries) != 0:
@@ -21,7 +21,7 @@ def calculate_deckstats(deck):
     else:
         win_percentage = 0
         win_percentage = "{:.0%}".format(win_percentage)
-    return entries, round_count, win_percentage
+    return entries, match_count, win_percentage
 
     print(f"Calculating deckstats for: {deck}")
     # retrieve entries for calculation
