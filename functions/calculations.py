@@ -3,6 +3,7 @@ import streamlit as st
 import functions
 from objects.database_client import db_client
 
+from objects.repositories.entry_repository import entry_repository
 
 # Run all the calculations after an FNM
 def calculations():
@@ -40,19 +41,15 @@ def update_deckstats():
     # Get list of decks
     db = db_client.get_client().TMMDB
     decks = functions.get_decks()
-    total_matches = functions.get_total_matches()
-    total_games = functions.get_total_games()
+    total_matches = entry_repository.get_total_matches()
+    total_games = entry_repository.get_total_games()
     # For each deck
     for deck in decks:
-        # Get win%
-        entries, match_count, match_win, games_count, games_win = (
-            functions.calculate_deck_stats(deck)
-        )
-        print(
-            "Deck: {} - matches played: {} - Win%:{}".format(
-                deck, match_count, match_win
+        # Get matches played, match win %, games played and game win %
+        match_count, match_win_percentage, games_count, game_win_percentage = (
+            functionscalculate_deck_stats(deck)
             )
-        )
+        
         # get stats vs other decks
         vs_deck_stats = functions.calculate_vs_deck_stats(
             deck, entries

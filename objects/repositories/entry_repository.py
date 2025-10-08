@@ -30,5 +30,18 @@ class EntryRepository:
         query = {"$or": [{"player1": playername}, {"player2": playername}]}
         return self._collection.find(query)
 
+    def get_total_games():
+        pipeline = [
+            {'$group': {
+                '_id': null,  # Group all documents together
+                'total_sales': {'$sum': '$sales'}
+            }}
+        ]
+        results = collection.aggregate(pipeline)
+        print(list(results))
+
+    def get_total_matches():
+
+
 
 entry_repository = EntryRepository()
