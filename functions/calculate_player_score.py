@@ -31,8 +31,6 @@ def calculate_play_points(entries, playername):
 
     for entry in entries:
         score = determine_match_scores(entry, playername)
-        print(f"player_score: {score["player_score"]}")
-        print(f"opp_score: {score["opp_score"]}")
         play_points_total += calculate_match_points(
             score["player_score"], score["opp_score"]
         )

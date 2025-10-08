@@ -2,7 +2,7 @@ from .add_data import add_data
 from .add_deck import add_deck
 from .add_jankpoint import add_jankpoint
 from .add_player import add_player
-from .calculate_deckstats import calculate_deckstats
+from .calculate_deck_stats import calculate_deck_stats, calculate_vs_deck_stats
 from .calculate_player_score import calculate_player_score
 from .calculations import calculations
 from .create_user_profile import create_user_profile
