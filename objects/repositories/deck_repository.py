@@ -29,7 +29,11 @@ class DeckRepository:
         # otherwise create deck
         return self._collection.insert_one({"deckname": deck_name})
 
-    def get_deckstats(self, deck_name: str):
+    def get_deckstats(self):
+        deckstats = []
+        return deckstats
+
+    def get_deckstats_for_deck(self, deck_name: str):
         deckstats = []
         return deckstats
 

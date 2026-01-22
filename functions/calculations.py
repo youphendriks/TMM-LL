@@ -55,8 +55,10 @@ def update_deckstats():
         update_operation = {
             "$set": {
                 "match_count": deck_stats["match_count"],
+                "match_win": deck_stats["match_win"],
                 "match_win_percentage": deck_stats["match_win_percentage"],
                 "games_count": deck_stats["games_count"],
+                "games_win": deck_stats["games_win"],
                 "game_win_percentage": deck_stats["game_win_percentage"],
             }
         }

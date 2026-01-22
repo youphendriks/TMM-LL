@@ -8,7 +8,7 @@ from .calculations import calculations
 from .create_user_profile import create_user_profile
 from .get_data import get_data
 from .get_decks import get_decks
-from .get_deckstats import get_deckstats
+from .get_deckstats import get_deckstats, get_deckstats_for_deck
 from .get_jankscore import get_jankscore
 from .get_players import get_players
 from .get_playerstats import get_playerstats
